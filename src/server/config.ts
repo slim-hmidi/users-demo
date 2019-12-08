@@ -1,5 +1,4 @@
-const __MONGO_HOST__ = "mongodb://localhost:27017";
-const __DEV_DB_NAME__ = "devDb";
-const __TEST_DB_NAME__ = "testDb";
+import { config } from "dotenv";
+import { resolve } from "path";
 
-export { __MONGO_HOST__, __DEV_DB_NAME__, __TEST_DB_NAME__ };
+config({ path: resolve(__dirname, "../../.env") });

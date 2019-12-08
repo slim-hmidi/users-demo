@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { __DEV_DB_NAME__, __MONGO_HOST__, __TEST_DB_NAME__ } from "../config";
+// import { __DEV_DB_NAME__, __MONGO_HOST__, __TEST_DB_NAME__ } from "../config";
 
 const options = {
   useCreateIndex: true,
@@ -8,13 +8,14 @@ const options = {
   useUnifiedTopology: true,
 };
 
-let dbName = __DEV_DB_NAME__;
+let dbName = process.env.__DEV_DB_NAME__;
 if (process.env.NODE_ENV === "test") {
-  dbName = __TEST_DB_NAME__;
+  dbName = process.env.__TEST_DB_NAME__;
 }
 (async () => {
   try {
-    await mongoose.connect(`${__MONGO_HOST__}/${dbName}`, options);
+    console.log('process.env: ', process.env.__MONGO_HOST__)
+    await mongoose.connect(`${process.env.__MONGO_HOST__}/${dbName}`, options);
   } catch (error) {
     console.log("Database connection error: ", error);
   }
