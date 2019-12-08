@@ -1,6 +1,6 @@
+import { Types } from "mongoose"
 import db from "../server/db/connection";
 import User from "../server/models/User";
-import { Types } from "mongoose"
 
 describe("Users", () => {
   beforeAll(() => {
@@ -32,16 +32,16 @@ describe("Users", () => {
 
     it("Should add a list of users to database", async () => {
       const users = [
-        new User({
+        {
           address: "address 1",
           email: "user1@gmail.com",
           name: "user 1",
-        }),
-        new User({
+        },
+        {
           address: "address 2",
           email: "user2@gmail.com",
           name: "user 2",
-        }),
+        },
       ];
       const createdUsers = await User.create(users);
       expect(createdUsers).toHaveLength(2);

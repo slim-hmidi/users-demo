@@ -18,25 +18,7 @@ export const createUser = async (req: Request, res: Response) => {
       (req.body.constructor === Array && !req.body.length)) {
       throw new ErrorHandler(404, "Request body should contain at least one user");
     }
-    // create a list of users
-    if (req.body.constructor === Array) {
-      const usersList = req.body.map((user: IUser) => {
-        return new User({
-          address: user.address,
-          email: user.email,
-          name: user.name,
-        });
-      });
-      const createdUsers = await User.create(usersList);
-      return res.status(201).send(createdUsers);
-    }
-    // create a single user
-    const newUser = new User({
-      address: req.body.address,
-      email: req.body.email,
-      name: req.body.name,
-    });
-    const createdUser = await User.create(newUser);
+    const createdUser = await User.create(req.body);
     return res.status(201).send(createdUser);
   } catch (error) {
     return res.status(error.statusCode || 500).send(error.message);
