@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-// import { __DEV_DB_NAME__, __MONGO_HOST__, __TEST_DB_NAME__ } from "../config";
 
 const options = {
   useCreateIndex: true,
