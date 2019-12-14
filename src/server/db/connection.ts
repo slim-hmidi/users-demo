@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === "test") {
 }
 (async () => {
   try {
-    console.log('process.env: ', process.env.__MONGO_HOST__)
     await mongoose.connect(`${process.env.__MONGO_HOST__}/${dbName}`, options);
   } catch (error) {
     console.log("Database connection error: ", error);
