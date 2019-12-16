@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 import request from "supertest";
 import { app } from "../server/app";
-import db from "../server/db/connection";
+import db from "../server/database/connection";
 
 describe("Server Apis", () => {
   beforeAll(() => {
@@ -17,13 +17,6 @@ describe("Server Apis", () => {
 
   afterAll(() => {
     return db.close();
-  });
-  describe("GET /index", () => {
-    it("Should return 200 Ok", async () => {
-      const { status, body } = await request(app).get("/index");
-      expect(status).toBe(200);
-      expect(body).toBe("OK");
-    });
   });
 
   describe("POST /users", () => {
