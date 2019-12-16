@@ -2,18 +2,9 @@ import { Request, Response } from "express";
 import User from "../models/User";
 import { ErrorHandler } from "../utils/error";
 
-interface IUser {
-  address?: string;
-  name: string;
-  email: string;
-}
-
-export const getIndexPage = (req: Request, res: Response) => {
-  return res.status(200).json("OK");
-};
-
 export const createUser = async (req: Request, res: Response) => {
   try {
+    // check that the req.body is not empty to create a new user
     if ((req.body.constructor === Object && !Object.keys(req.body).length) ||
       (req.body.constructor === Array && !req.body.length)) {
       throw new ErrorHandler(404, "Request body should contain at least one user");

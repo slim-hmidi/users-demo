@@ -4,16 +4,11 @@ import {
   deleteUser,
   fetchManyUsers,
   fetchOneUser,
-  getIndexPage,
   updateUser,
 } from "../controllers/index";
 
 const router = Router();
 
-router.route("/index")
-  .get(getIndexPage);
-
-// Create a user
 router.route("/users")
   .get(fetchManyUsers)
   .post(createUser);

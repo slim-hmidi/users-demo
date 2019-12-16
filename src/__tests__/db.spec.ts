@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import "../server/config";
-import db from "../server/db/connection";
+import db from "../server/database/connection";
 import User from "../server/models/User";
 
 describe("Users", () => {

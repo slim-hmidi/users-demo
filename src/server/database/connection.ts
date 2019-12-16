@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
 
+/* To avoid deprecation warnings mentioned by mongoose when
+starting the database, we set these options according to the
+warnings messages.If you want to get more information about
+this issue, visit this link below:
+https://mongoosejs.com/docs/connections.html#options.
+*/
+
 const options = {
   useCreateIndex: true,
   useFindAndModify: false,

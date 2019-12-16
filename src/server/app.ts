@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import express, { Express } from "express";
 import "./config";
-import "./db/connection";
+import "./database/connection";
 import router from "./routes/index";
 import { errorMiddleware } from "./utils/error";
 
