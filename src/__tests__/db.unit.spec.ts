@@ -1,6 +1,5 @@
-import { truncate } from "fs";
 import { Types } from "mongoose";
-import User, { IUser } from "../server/models/User";
+import User from "../server/models/User";
 
 describe("Create users", () => {
   it("Should create a new user successfully!", () => {

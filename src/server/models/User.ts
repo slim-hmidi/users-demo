@@ -23,6 +23,8 @@ export const UserSchema = new Schema({
   },
 });
 
+UserSchema.index({ name: "text" });
+
 const User = mongoose.model<IUser>("User", UserSchema);
 
 export default User;

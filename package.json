@@ -26,7 +26,7 @@
     "start:build": "tsc -w",
     "start:run": "nodemon ./build/server/server.js",
     "start": "set NODE_ENV=development && concurrently npm:start:*",
-    "test": "tsc && jest "
+    "test": "jest "
   },
   "author": "",
   "license": "ISC"

@@ -166,4 +166,84 @@ describe("Server Apis", () => {
       expect(body).toHaveLength(0);
     });
   });
+
+  describe("GET /search", () => {
+    it("Should return successfully the list of users for a given filter", async () => {
+      const users = [
+        {
+          address: "address 1",
+          email: "john.paul@gmail.com",
+          name: "John Paul",
+        },
+        {
+          address: "address 2",
+          email: "john.smith@gmail.com",
+          name: "John Smith",
+        },
+        {
+          address: "address 3",
+          email: "anna.lauren@gmail.com",
+          name: "Anna Lauren",
+        },
+      ];
+
+      await request(app).post("/users").send(users);
+      const { status, body } = await request(app).get("/search?filter=john");
+
+      expect(status).toBe(200);
+      expect(body).toHaveLength(2);
+    });
+
+    it("Should return successfully an empty list of users for a given filter", async () => {
+      const users = [
+        {
+          address: "address 1",
+          email: "john.paul@gmail.com",
+          name: "John Paul",
+        },
+        {
+          address: "address 2",
+          email: "john.smith@gmail.com",
+          name: "John Smith",
+        },
+        {
+          address: "address 3",
+          email: "anna.lauren@gmail.com",
+          name: "Anna Lauren",
+        },
+      ];
+
+      await request(app).post("/users").send(users);
+      const { status, body } = await request(app).get("/search?filter=tom");
+
+      expect(status).toBe(200);
+      expect(body).toHaveLength(0);
+    });
+
+    it("Should return all the users when the filter is empty", async () => {
+      const users = [
+        {
+          address: "address 1",
+          email: "john.paul@gmail.com",
+          name: "John Paul",
+        },
+        {
+          address: "address 2",
+          email: "john.smith@gmail.com",
+          name: "John Smith",
+        },
+        {
+          address: "address 3",
+          email: "anna.lauren@gmail.com",
+          name: "Anna Lauren",
+        },
+      ];
+
+      await request(app).post("/users").send(users);
+      const { status, body } = await request(app).get("/search?filter=");
+
+      expect(status).toBe(200);
+      expect(body).toHaveLength(3);
+    });
+  });
 });
