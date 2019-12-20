@@ -72,7 +72,6 @@ export const fetchOneUser = async (req: Request, res: Response) => {
 
 export const searchUsers = async (req: Request, res: Response) => {
   const { filter } = req.query;
-
   try {
     if (!filter) {
       const fetchedUsers = await User.find({});
@@ -80,8 +79,9 @@ export const searchUsers = async (req: Request, res: Response) => {
     }
 
     const filteredUsers = await User.find({
-      $text: {
-        $search: filter,
+      name: {
+        $options: "i",
+        $regex: filter,
       },
     });
     return res.status(200).send(filteredUsers);
