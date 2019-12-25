@@ -69,23 +69,3 @@ export const fetchOneUser = async (req: Request, res: Response) => {
     return res.status(error.statusCode || 500).send(error.message);
   }
 };
-
-export const searchUsers = async (req: Request, res: Response) => {
-  const { filter } = req.query;
-  try {
-    if (!filter) {
-      const fetchedUsers = await User.find({});
-      return res.status(200).send(fetchedUsers);
-    }
-
-    const filteredUsers = await User.find({
-      name: {
-        $options: "i",
-        $regex: filter,
-      },
-    });
-    return res.status(200).send(filteredUsers);
-  } catch (error) {
-    return res.status(error.statusCode || 500).send(error.message);
-  }
-};

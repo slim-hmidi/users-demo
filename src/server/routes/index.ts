@@ -4,7 +4,6 @@ import {
   deleteUser,
   fetchManyUsers,
   fetchOneUser,
-  searchUsers,
   updateUser,
 } from "../controllers/index";
 
@@ -19,6 +18,4 @@ router.route("/users/:id")
   .get(fetchOneUser)
   .patch(updateUser);
 
-router.route("/search")
-  .get(searchUsers);
 export default router;
