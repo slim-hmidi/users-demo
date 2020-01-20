@@ -14,6 +14,11 @@ Then install the packages:
 npm install
 
 ```
+Before starting the server, you need to fill the database:
+```
+mongoimport.exe --jsonArray --db=devDb --collection=users --file=${path}/seeds/users.json
+```
+
 To start the server, you just execute this instruction:
 
 ```
